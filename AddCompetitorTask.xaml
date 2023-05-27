@@ -1,0 +1,20 @@
+﻿<Window x:Class="Timer.AddCompetitorTask"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Timer"
+        mc:Ignorable="d"
+        Title="AddCompetitorTask" Height="221" Width="800">
+    <Grid Margin="0,0,0,-6">
+        <Label x:Name="AddTaskLabel" Content="Добавление задачи для участника" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Выберите тип:" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top"/>
+        <StackPanel Margin="0,76,616,51">
+            <RadioButton x:Name="IsTimerRadio" Content="Таймер"/>
+            <RadioButton x:Name="StopwatchRadio" Content="Секундомер"/>
+        </StackPanel>
+        <Label Content="Введите название задачи:" HorizontalAlignment="Left" Margin="159,45,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TaskNameTextBox" HorizontalAlignment="Left" Margin="159,79,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
+        <Button x:Name="AddTaskButton" Content="Добавить задачу" HorizontalAlignment="Center" Margin="0,139,0,0" VerticalAlignment="Top" Height="32" Width="124" Click="AddTaskButton_Click"/>
+    </Grid>
+</Window>

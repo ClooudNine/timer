@@ -1,0 +1,34 @@
+﻿<Window x:Class="Timer.AddTimerModal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Timer"
+        mc:Ignorable="d"
+        Title="Добавить новый таймер" Height="300" BorderThickness="5" Width="500" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True" Background="{x:Null}">
+    <Window.Resources>
+        <LinearGradientBrush x:Key="GradientForCreateButton" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#7F7FD5" Offset="0" />
+            <GradientStop Color="#86A8E7" Offset="0.5" />
+            <GradientStop Color="#91EAE4" Offset="1" />
+        </LinearGradientBrush>
+    </Window.Resources>
+    <Border CornerRadius="20" BorderBrush="Black" Background="White" BorderThickness="3">
+        <Grid Margin="0,0,0,-6">
+            <Label Content="Введите название таймера:" HorizontalAlignment="Center" Margin="0,23,0,0" VerticalAlignment="Top" FontFamily="Cascadia Code SemiBold" FontSize="24"/>
+            <TextBox x:Name="EnterCaptionTimer" HorizontalAlignment="Center" Margin="0,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="347" Height="28"/>
+            <Button x:Name="CreateButton" Content="Создать" HorizontalAlignment="Center" Margin="0,205,0,0" Width="150" Height="40" VerticalAlignment="Top" Click="CreateButton_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="{StaticResource GradientForCreateButton}" />
+                        <Setter Property="FontSize" Value="20"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Image x:Name="Close" HorizontalAlignment="Left" Height="33" Margin="441,0,0,0" VerticalAlignment="Top" Width="35" Source="/close.png" MouseLeftButtonUp="Close_MouseLeftButtonUp"/>
+        </Grid>
+    </Border>
+</Window>
