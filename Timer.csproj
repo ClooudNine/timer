@@ -123,20 +123,20 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="app_icon.ico" />
+    <Resource Include="Assets\app_icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <SplashScreen Include="loading.gif" />
+    <SplashScreen Include="Assets\loading.gif" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="background.jpg" />
+    <Resource Include="Assets\background.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="close.png" />
+    <Resource Include="Assets\close.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="addTask.png" />
-    <Resource Include="deleteTask.png" />
+    <Resource Include="Assets\addTask.png" />
+    <Resource Include="Assets\deleteTask.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

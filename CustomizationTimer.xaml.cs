@@ -29,7 +29,7 @@ namespace Timer
             AddCompetitorModal addCompetitorModal = new AddCompetitorModal();
             if (addCompetitorModal.ShowDialog() == true)
             {
-                StackPanel competitorPanel = new StackPanel { Margin = new Thickness(5), Width = 300, Height = 300};
+                StackPanel competitorPanel = new StackPanel { Width = 500, Height = 300};
                 Border stackPanelBorder = new Border
                 {
                     Child = competitorPanel,
@@ -40,32 +40,38 @@ namespace Timer
 
                 StackPanel controlsPanel = new StackPanel { Orientation = Orientation.Horizontal };
 
-                Image addTask = new Image { Source = new BitmapImage(new Uri("addTask.png", UriKind.Relative)), Width = 40, Height = 40 };
+                Image addTask = new Image { 
+                    Source = new BitmapImage(new Uri("Assets/addTask.png", UriKind.Relative)),
+                    Width = 40,
+                    Height = 40,
+                    ToolTip = new ToolTip { Content = "Добавить задачу" }
+                };
                 addTask.MouseLeftButtonDown += AddTask_MouseLeftButtonDown;
-                ToolTip addTaskTip = new ToolTip { Content = "Добавить задачу" };
-                addTask.ToolTip = addTaskTip;
                 controlsPanel.Children.Add(addTask);
 
-                Image deleteTask = new Image { Source = new BitmapImage(new Uri("deleteTask.png", UriKind.Relative)), Width = 40, Height = 40 };
-                ToolTip deleteTaskTip = new ToolTip { Content = "Удалить задачу" };
-                deleteTask.ToolTip = deleteTaskTip;
+                Image deleteTask = new Image {
+                    Source = new BitmapImage(new Uri("Assets/deleteTask.png", UriKind.Relative)),
+                    Width = 40,
+                    Height = 40,
+                    ToolTip = new ToolTip { Content = "Удалить задачу" }
+                };
                 controlsPanel.Children.Add(deleteTask);
 
                 ScrollViewer scrollViewerForTasks = new ScrollViewer { VerticalScrollBarVisibility = ScrollBarVisibility.Auto };
                 ListBox tasksList = new ListBox
                 {
                     BorderBrush = Brushes.Black,
-                    BorderThickness = new Thickness(5),
-                    Corner
+                    BorderThickness = new Thickness(5)
                 };
                 scrollViewerForTasks.Content = tasksList;
                 competitorPanel.Children.Add(controlsPanel);
                 competitorPanel.Children.Add(scrollViewerForTasks);
-                Expander expander = new Expander 
-                { 
+                Expander expander = new Expander
+                {
                     Header = addCompetitorModal.CaptionCompetitorTextBox.Text,
                     Content = stackPanelBorder,
-                    IsExpanded = true 
+                    IsExpanded = true,
+                    Margin = new Thickness(20, 0, 0, 0)
                 };
                 Competitors.Children.Add(expander);
             }
@@ -83,6 +89,12 @@ namespace Timer
                 Label taskCaption = new Label { Content = addCompetitorTask.TaskNameTextBox.Text };
                 tasksList.Items.Add(taskCaption);
             }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
         }
     }
 }

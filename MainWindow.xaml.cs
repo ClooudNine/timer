@@ -30,7 +30,7 @@ namespace Timer
             AddTimerModal addTimerModal = new AddTimerModal();
             if(addTimerModal.ShowDialog() == true)
             {
-                Hide();
+                Close();
             }
         }
 
