@@ -11,7 +11,7 @@
         <Label Content="Выберите тип:" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top"/>
         <StackPanel Margin="0,76,616,51">
             <RadioButton x:Name="IsTimerRadio" Content="Таймер"/>
-            <RadioButton x:Name="StopwatchRadio" Content="Секундомер"/>
+            <RadioButton x:Name="IsStopwatchRadio" Content="Секундомер"/>
         </StackPanel>
         <Label Content="Введите название задачи:" HorizontalAlignment="Left" Margin="159,45,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="TaskNameTextBox" HorizontalAlignment="Left" Margin="159,79,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>

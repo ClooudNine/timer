@@ -5,14 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Timer"
         mc:Ignorable="d"
-        Title="Timer" Height="1080" Width="1920"
-        Icon="Assets/app_icon.ico" WindowState="Maximized">
-    <Window.Resources>
-    </Window.Resources>
+        Title="Timer"
+        Icon="Assets/app_icon.ico"
+        WindowState="Maximized">
     <Window.Background>
         <ImageBrush ImageSource="Assets/background.jpg"/>
     </Window.Background>
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.RowSpan="">
+            
+        </StackPanel>
         <Label Content="Timer" HorizontalAlignment="Left" Margin="133,451,0,0" VerticalAlignment="Top" FontFamily="Cascadia Mono SemiBold" FontSize="72"/>
         <Button x:Name="AddTimer" Content="Добавить новый таймер" HorizontalAlignment="Left" Margin="794,88,0,0" VerticalAlignment="Top" Height="73" Width="428" FontSize="24" FontFamily="Cascadia Code SemiBold" BorderThickness="1,1,1,1" BorderBrush="Black" Background="#FFAAFFC8" Click="AddTimer_Click">
             <Button.Resources>
