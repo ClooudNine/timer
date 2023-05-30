@@ -3,40 +3,91 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Timer"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         mc:Ignorable="d"
         Title="Timer"
         Icon="Assets/app_icon.ico"
-        WindowState="Maximized">
-    <Window.Background>
-        <ImageBrush ImageSource="Assets/background.jpg"/>
-    </Window.Background>
+        Background="#f6f9fe"
+        WindowState="Maximized" Loaded="Window_Loaded">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="100"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"></ColumnDefinition>
-            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="500"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Row="0" Grid.RowSpan="">
-            
-        </StackPanel>
-        <Label Content="Timer" HorizontalAlignment="Left" Margin="133,451,0,0" VerticalAlignment="Top" FontFamily="Cascadia Mono SemiBold" FontSize="72"/>
-        <Button x:Name="AddTimer" Content="Добавить новый таймер" HorizontalAlignment="Left" Margin="794,88,0,0" VerticalAlignment="Top" Height="73" Width="428" FontSize="24" FontFamily="Cascadia Code SemiBold" BorderThickness="1,1,1,1" BorderBrush="Black" Background="#FFAAFFC8" Click="AddTimer_Click">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="20"></Setter>
-                </Style>
-            </Button.Resources>
-        </Button>
-        <Button x:Name="LoadTimer" Content="Загрузить сохранённый таймер" HorizontalAlignment="Left" Margin="794,0,0,0" VerticalAlignment="Center" Height="77" Width="428" Background="#FF03F7F0" FontFamily="Cascadia Mono SemiBold" FontSize="24" Click="LoadTimer_Click">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="20"></Setter>
-                </Style>
-            </Button.Resources>
-        </Button>
+        <Border Grid.Row="0"
+                x:Name="menuBorder"
+                BorderBrush="#2980B9"
+                BorderThickness="2"
+                CornerRadius="0 40 40 0"
+                Grid.Column="0">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Offset="0" Color="#2980B9" />
+                    <GradientStop Offset="0.5" Color="#6DD5FA" />
+                    <GradientStop Offset="1" Color="#FFFFFF" />
+                </LinearGradientBrush>
+            </Border.Background>
+            <StackPanel Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Timer"
+                           FontFamily="Cascadia Mono SemiBold"
+                           VerticalAlignment="Center"
+                           Foreground="White"
+                           Margin="20 0 0 0"
+                           FontSize="72"/>
+                    <Image Width="300"
+                           gif:ImageBehavior.AnimatedSource="Assets/timer.gif"/>
+                </StackPanel>
+                <Button x:Name="AddTimer"
+                        Content="Добавить новый таймер"
+                        FontSize="28"
+                        FontFamily="Cascadia Code SemiBold"
+                        BorderBrush="White"
+                        BorderThickness="5"
+                        Background="Transparent"
+                        Margin="10 100 10 0"
+                        Foreground="White"
+                        Click="AddTimer_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="20"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="ExitProgram"
+                        Content="Выход из программы"
+                        FontSize="28"
+                        FontFamily="Cascadia Code SemiBold"
+                        BorderBrush="White"
+                        Margin="10 20 10 0"
+                        BorderThickness="5"
+                        Background="Transparent"
+                        Foreground="White" Click="ExitProgram_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="20"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+        </Border>
+        <Border Grid.Row="0" Grid.Column="1" BorderThickness="2" BorderBrush="#2980B9" CornerRadius="40" Margin="10 0 0 0">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Offset="0" Color="#74ebd5" />
+                    <GradientStop Offset="1" Color ="#ACB6E5" />
+                </LinearGradientBrush>
+            </Border.Background>
+            <StackPanel>
+                <TextBlock FontFamily="Cascadia Code SemiBold"
+                           HorizontalAlignment="Center"
+                           FontSize="36"
+                           Text="Список сохранённых таймеров">
+                </TextBlock>
+                <WrapPanel x:Name="SavedTimers">
+                    
+                </WrapPanel>
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>

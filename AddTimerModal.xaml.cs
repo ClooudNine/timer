@@ -25,9 +25,8 @@ namespace Timer
         }
         private void Close_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Close();
+            DialogResult = false;
         }
-
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
             if(EnterCaptionTimer.Text.Length < 3)
@@ -35,11 +34,10 @@ namespace Timer
                 MessageBox.Show("Длина названия таймера не может быть меньше 3!");
             } else
             {
-                CustomizationTimer customizationTimer = new CustomizationTimer();
                 DialogResult = true;
+                CustomizationTimer customizationTimer = new CustomizationTimer();
                 customizationTimer.Show();
                 customizationTimer.CaptionTimer.Content = "Таймер " + EnterCaptionTimer.Text;
-                Close();
             }
         }
     }

@@ -26,7 +26,13 @@ namespace Timer
 
         private void AddTaskButton_Click(object sender, RoutedEventArgs e)
         {
-            DialogResult = true;
+            if(IsStopwatchRadio.IsChecked == false && IsTimerRadio.IsChecked == false) 
+            {
+                MessageBox.Show("Выберите тип таймера!");
+            } else
+            {
+                DialogResult = true;
+            }
         }
     }
 }

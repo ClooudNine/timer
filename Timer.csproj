@@ -49,6 +49,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WpfAnimatedGif, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9e7cd3b544a090dc, processorArchitecture=MSIL">
+      <HintPath>packages\WpfAnimatedGif.2.0.2\lib\net40\WpfAnimatedGif.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -114,6 +117,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -129,14 +133,14 @@
     <SplashScreen Include="Assets\loading.gif" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\background.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Assets\close.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\addTask.png" />
     <Resource Include="Assets\deleteTask.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\timer.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

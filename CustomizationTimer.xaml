@@ -3,13 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Timer"
         mc:Ignorable="d"
         Title="Таймер" WindowState="Maximized" Icon="Assets/app_icon.ico" Closing="Window_Closing" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style x:Key="ControlPanelButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="Transparent" />
-            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="White" />
+            <Setter Property="BorderThickness" Value="5" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="FontFamily" Value="Cascadia Mono SemiBold" />
             <Setter Property="FontSize" Value="20" />
@@ -41,27 +41,42 @@
                FontSize="40"/>
         </Border>
         <Border Grid.Row="1" Grid.Column="0" BorderBrush="White" BorderThickness="5" CornerRadius="20" Margin= "20, 0, 20, 20">
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Border BorderBrush="White" BorderThickness="5" CornerRadius="20" Height="50">
-                    <Button x:Name="AddPeople"
-                            Style="{StaticResource ControlPanelButtonStyle}"
-                            Content="Добавить участника"
-                            Click="AddPeople_Click"/>
-                </Border>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button x:Name="SaveTimer"
+                        Style="{StaticResource ControlPanelButtonStyle}"
+                        Content="Сохранить таймер">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="20"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="AddPeople"
+                        Style="{StaticResource ControlPanelButtonStyle}"
+                        Content="Добавить участника"
+                        Click="AddPeople_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="20"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
                 <Button x:Name="DeletePeople"
                         Style="{StaticResource ControlPanelButtonStyle}"
-                        Content="Удалить участника"/>
-                <Button x:Name="DeleteAllPeople"
-                        Style="{StaticResource ControlPanelButtonStyle}"
-                        Content="Удалить всех участников"/>
+                        Content="Удалить участника">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="20"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
             </StackPanel>
         </Border>
         <Border Grid.Row="3" Grid.Column="0" Margin="20 0 20 0" BorderBrush="White" BorderThickness="5" CornerRadius="20">
             <ScrollViewer Grid.Row="3" Grid.Column="0">
                 <WrapPanel x:Name="Competitors"
                            ItemWidth="500"
-                           ItemHeight="300"
-                           HorizontalAlignment="Center"
+                           HorizontalAlignment="Left"
                            VerticalAlignment="Top"/>
             </ScrollViewer>
         </Border>
