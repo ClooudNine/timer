@@ -34,7 +34,7 @@
                     </Style>
                 </Button.Resources>
             </Button>
-            <Image x:Name="Close" HorizontalAlignment="Left" Height="33" Margin="441,0,0,0" VerticalAlignment="Top" Width="35" Source="Assets/close.png" MouseLeftButtonUp="Close_MouseLeftButtonUp"/>
+            <Image x:Name="CloseImage" HorizontalAlignment="Left" Height="33" Margin="441,0,0,0" VerticalAlignment="Top" Width="35" Source="Assets/close.png" MouseLeftButtonUp="CloseImage_MouseLeftButtonUp"/>
         </Grid>
     </Border>
 </Window>

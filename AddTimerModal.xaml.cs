@@ -23,7 +23,7 @@ namespace Timer
         {
             InitializeComponent();
         }
-        private void Close_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void CloseImage_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             DialogResult = false;
         }
