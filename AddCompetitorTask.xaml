@@ -3,18 +3,94 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Timer"
         mc:Ignorable="d"
-        Title="AddCompetitorTask" Height="221" Width="800">
-    <Grid Margin="0,0,0,-6">
-        <Label x:Name="AddTaskLabel" Content="Добавление задачи для участника" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top"/>
-        <Label Content="Выберите тип:" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top"/>
-        <StackPanel Margin="0,76,616,51">
-            <RadioButton x:Name="IsTimerRadio" Content="Таймер"/>
-            <RadioButton x:Name="IsStopwatchRadio" Content="Секундомер"/>
-        </StackPanel>
-        <Label Content="Введите название задачи:" HorizontalAlignment="Left" Margin="159,45,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TaskNameTextBox" HorizontalAlignment="Left" Margin="159,79,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152"/>
-        <Button x:Name="AddTaskButton" Content="Добавить задачу" HorizontalAlignment="Center" Margin="0,139,0,0" VerticalAlignment="Top" Height="32" Width="124" Click="AddTaskButton_Click"/>
-    </Grid>
+        Icon="Assets/app_icon.ico"
+        Title="Добавление задачи"
+        WindowStartupLocation="CenterScreen"
+        Background="{x:Null}"
+        AllowsTransparency="True"
+        Width="800"
+        Height="300" 
+        WindowStyle="None">
+    <Border CornerRadius="20" BorderThickness="0" BorderBrush="Transparent">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0.5, 0" EndPoint="0.5,1">
+                <GradientStop Color="#7F7FD5" Offset="0" />
+                <GradientStop Color="#86A8E7" Offset="0.5" />
+                <GradientStop Color="#91EAE4" Offset="1" />
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid Background="Transparent">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="0.7*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="AddTaskLabel"
+               Grid.Row="0"
+               Grid.Column="0"
+               Grid.ColumnSpan="3"
+               FontFamily="Cascadia Mono SemiBold"
+               FontSize="32"
+               Content="Добавление задачи для участника"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"/>
+            <Image Source="Assets/close.png"
+                   Grid.Row="0"
+                   Grid.Column="2"
+                   VerticalAlignment="Center"
+                   Height="50"
+                   HorizontalAlignment="Right" MouseLeftButtonUp="Image_MouseLeftButtonUp">
+            </Image>
+            <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Center">
+                <Label Content="Введите название задачи:"
+                   FontFamily="Cascadia Mono SemiBold"
+                   FontSize="20"
+                   HorizontalAlignment="Left"/>
+                <TextBox x:Name="TaskNameTextBox"
+                     HorizontalAlignment="Stretch"
+                     VerticalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center">
+                <Label Content="Выберите тип:"
+                   FontFamily="Cascadia Mono SemiBold"
+                   FontSize="20"/>
+                <StackPanel>
+                    <RadioButton x:Name="IsTimerRadio" Content="Таймер" Checked="IsTimerRadio_Checked"/>
+                    <RadioButton x:Name="IsStopwatchRadio" Content="Секундомер" Checked="IsStopwatchRadio_Checked"/>
+                </StackPanel>
+            </StackPanel>
+            <Button x:Name="AddTaskButton"
+                Grid.Row="2"
+                Grid.Column="1"
+                Content="Добавить задачу"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Height="23" Width="124"
+                Click="AddTaskButton_Click"/>
+            <StackPanel x:Name="SetTimer" Grid.Column="2" Grid.Row="1" VerticalAlignment="Top" Visibility="Hidden">
+                <Label Content="Укажите время таймера:"
+                   FontFamily="Cascadia Mono SemiBold"
+                   FontSize="20"
+                   HorizontalAlignment="Center"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Часы:"></TextBlock>
+                    <TextBox x:Name="HoursTextBox" Margin="20 0 0 0" Width="120" MaxLength="2" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
+                    <TextBlock Text="Минуты:"></TextBlock>
+                    <TextBox x:Name="MinutesTextBox" Margin="5 0 0 0" Width="120" MaxLength="2"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
+                    <TextBlock Text="Секунды:"></TextBlock>
+                    <TextBox x:Name="SecondsTextBox" Margin="2 0 0 0" Width="120" MaxLength="2"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Border>
 </Window>
