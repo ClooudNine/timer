@@ -44,42 +44,56 @@
         </Border>
         <Border Grid.Row="1" Grid.Column="0" BorderBrush="White" BorderThickness="5" CornerRadius="20" Margin= "20, 0, 20, 20">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Button x:Name="SaveTimer"
-                        Style="{StaticResource ControlPanelButtonStyle}"
-                        Content="Сохранить таймер">
-                    <Button.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="20"/>
-                        </Style>
-                    </Button.Resources>
-                </Button>
                 <Button x:Name="AddPeople"
                         Style="{StaticResource ControlPanelButtonStyle}"
-                        Content="Добавить участника"
                         Click="AddPeople_Click">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="20"/>
                         </Style>
                     </Button.Resources>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image Source="Assets/addPerson.png" Height="30" />
+                        <TextBlock Margin="10 0 0 0" VerticalAlignment="Center" Text="Добавить участника"/>
+                    </StackPanel>
                 </Button>
                 <Button x:Name="DeletePeople"
                         Style="{StaticResource ControlPanelButtonStyle}"
-                        Content="Удалить участника">
+                        Click="DeletePeople_Click">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="20"/>
                         </Style>
                     </Button.Resources>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image Source="Assets/removePerson.png" Height="30" />
+                        <TextBlock Margin="10 0 0 0" VerticalAlignment="Center" Text="Удалить участника"/>
+                    </StackPanel>
                 </Button>
                 <Button x:Name="RunFirstTask"
                         Style="{StaticResource ControlPanelButtonStyle}"
-                        Content="Запустить задачи" Click="RunFirstTask_Click">
+                        Click="RunFirstTask_Click">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="20"/>
                         </Style>
                     </Button.Resources>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image Source="Assets/startFirstTask.png" Height="30" />
+                        <TextBlock Margin="10 0 0 0" VerticalAlignment="Center" Text="Запустить задачи"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="SaveTimer"
+                        Style="{StaticResource ControlPanelButtonStyle }">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="20"/>
+                        </Style>
+                    </Button.Resources>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image Source="Assets/saveTimer.png" Height="30" />
+                        <TextBlock Margin="10 0 0 0" VerticalAlignment="Center" Text="Сохранить таймер"/>
+                    </StackPanel>
                 </Button>
             </StackPanel>
         </Border>

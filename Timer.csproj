@@ -65,6 +65,9 @@
     <Compile Include="CompetitorControl.xaml.cs">
       <DependentUpon>CompetitorControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DeleteCompetitorModal.xaml.cs">
+      <DependentUpon>DeleteCompetitorModal.xaml</DependentUpon>
+    </Compile>
     <Compile Include="IUpdater.cs" />
     <Compile Include="StopwatchControl.xaml.cs">
       <DependentUpon>StopwatchControl.xaml</DependentUpon>
@@ -89,6 +92,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CustomizationTimer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DeleteCompetitorModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -176,6 +183,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\reset.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\addPerson.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\saveTimer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\removePerson.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\startFirstTask.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\deleteIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

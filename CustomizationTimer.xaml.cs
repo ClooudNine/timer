@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 
 namespace Timer
@@ -15,8 +11,9 @@ namespace Timer
     /// </summary>
     public partial class CustomizationTimer : Window
     {
-        private DispatcherTimer dispatcherTimer = new DispatcherTimer();
+        public DispatcherTimer dispatcherTimer = new DispatcherTimer();
         public List<IUpdater> stopwatchesAndTimers = new List<IUpdater>();
+        public List<CompetitorControl> competitors  = new List<CompetitorControl>();
         public CustomizationTimer()
         {
             InitializeComponent();
@@ -35,22 +32,15 @@ namespace Timer
             AddCompetitorModal addCompetitorModal = new AddCompetitorModal();
             if (addCompetitorModal.ShowDialog() == true)
             {
-                CompetitorControl competitorControl = new CompetitorControl(dispatcherTimer, stopwatchesAndTimers, addCompetitorModal.CaptionCompetitorTextBox.Text);
+                CompetitorControl competitorControl = new CompetitorControl(dispatcherTimer, stopwatchesAndTimers, addCompetitorModal.CompetitorNameTextBox.Text);
                 Competitors.Children.Add(competitorControl);
+                competitors.Add(competitorControl);
             }
         }
-        private ListBox GetTaskListFromButton(object sender)
+        private void DeletePeople_Click(object sender, RoutedEventArgs e)
         {
-            Image element = (Image)sender;
-            StackPanel controls = (StackPanel)element.Parent;
-            Border controlsBorder = (Border)controls.Parent;
-            StackPanel competitor = (StackPanel)controlsBorder.Parent;
-            ListBox tasksList = competitor.Children.OfType<ListBox>().FirstOrDefault();
-            return tasksList;
-        }
-        private void DeleteTask_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-           
+            DeleteCompetitorModal deleteCompetitorModal = new DeleteCompetitorModal(competitors, Competitors);
+            deleteCompetitorModal.ShowDialog();
         }
         private void RunFirstTask_Click(object sender, RoutedEventArgs e)
         {
@@ -60,7 +50,6 @@ namespace Timer
             }
             else
             {
-
             }
         }
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

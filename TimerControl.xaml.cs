@@ -82,11 +82,13 @@ namespace Timer
             {
                 MessageBox.Show("Время на задание " + taskName + " у участника вышло!");
                 stopwatchesAndTimers.Remove(this);
-                stopwatch.Stop();
+                stopwatch.Reset();
                 if (stopwatchesAndTimers.Count == 0)
                 {
                     dispatcherTimer.Stop();
                 }
+                TimerProgressBar.Value = 0;
+                StopwatchStatTextBox.Text = SecondsToHMS(fullSeconds);
                 StartStopwatchButton.IsEnabled = true;
                 StopStopwatchButton.IsEnabled = false;
             }

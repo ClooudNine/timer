@@ -3,11 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Timer"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" Unloaded="UserControl_Unloaded">
     <Border BorderBrush="White" BorderThickness="5" CornerRadius="20" Margin="20 20 0 0">
-        <Expander MaxHeight="300" IsExpanded="True">
+        <Expander x:Name="CompetitorExpander" MaxHeight="300" IsExpanded="True">
             <StackPanel>
                 <Border BorderBrush="White" BorderThickness="0 4 0 4">
                     <StackPanel VerticalAlignment="Center"

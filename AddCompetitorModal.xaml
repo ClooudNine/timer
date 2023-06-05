@@ -3,13 +3,64 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Timer"
         mc:Ignorable="d"
-        Title="Добавление участника" Height="256" Width="800" WindowStartupLocation="CenterScreen">
-    <Grid Margin="0,0,0,8">
-        <Label Content="Введите обозначение участника:" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Height="39" Width="192"/>
-        <TextBox x:Name="CaptionCompetitorTextBox" HorizontalAlignment="Center" Margin="0,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="192" Height="36"/>
-        <Button x:Name="AddCompetitor" Content="Добавить участника" HorizontalAlignment="Center" Margin="0,146,0,0" VerticalAlignment="Top" Height="40" Width="192" Click="AddCompetitor_Click"/>
-
-    </Grid>
+        Title="Добавление участника"
+        Height="230"
+        Width="750"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        Icon="Assets/app_icon.ico"
+        WindowStyle="None">
+    <Border CornerRadius="20" Background="White" BorderThickness="5" BorderBrush="Black">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock HorizontalAlignment="Center"
+                       Grid.Row="0"
+                           VerticalAlignment="Center"
+                           FontFamily="Cascadia Mono SemiBold"
+                           FontSize="28"
+                           Text="Добавление участника"/>
+            <Image x:Name="CloseModalButton" Grid.Row="0" Source="Assets/close.png" HorizontalAlignment="Right" Height="50" MouseLeftButtonUp="CloseModalButton_MouseLeftButtonUp"/>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock VerticalAlignment="Center"
+                           FontFamily="Cascadia Mono SemiBold"
+                           FontSize="20"
+                           Text="Введите обозначение участника:"/>
+                <TextBox x:Name="CompetitorNameTextBox"
+                         FontFamily="Cascadia Mono SemiBold"
+                         FontSize="20"
+                         Width="300"
+                         Margin="20 0 0 0"
+                         Height="30"
+                         HorizontalAlignment="Center">
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+            </StackPanel>
+            <Button x:Name="AddCompetitorButton"
+                    Grid.Row="2"
+                    Height="40"
+                    Width="200"
+                    FontFamily="Cascadia Mono SemiBold"
+                    FontSize="16"
+                    Content="Добавить участника"
+                    HorizontalAlignment="Center"
+                    Background="#00fddf"
+                    Click="AddCompetitorButton_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
+    </Border>
 </Window>

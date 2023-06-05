@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace Timer
 {
@@ -24,15 +12,20 @@ namespace Timer
             InitializeComponent();
         }
 
-        private void AddCompetitor_Click(object sender, RoutedEventArgs e)
+        private void AddCompetitorButton_Click(object sender, RoutedEventArgs e)
         {
-            if(CaptionCompetitorTextBox.Text.Length == 0)
+            if(CompetitorNameTextBox.Text.Length == 0)
             {
-                MessageBox.Show("Наименование участника не может быть пустым!");
+                MessageBox.Show("Наименование участника не может быть пустым!", "Пустое имя участника!");
             } else
             {
                 DialogResult = true;
             }
+        }
+
+        private void CloseModalButton_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            DialogResult = false;
         }
     }
 }
