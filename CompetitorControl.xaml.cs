@@ -45,6 +45,13 @@ namespace Timer
 
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
+            foreach (IUpdater stopwatchOrTimer in CompetitorTasksListBox.Items) 
+            {
+                if(stopwatchesAndTimers.Contains(stopwatchOrTimer))
+                {
+                    stopwatchesAndTimers.Remove(stopwatchOrTimer);
+                }
+            }
         }
     }
 }
