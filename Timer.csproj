@@ -62,7 +62,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="IStopwatchAndTimer.cs" />
+    <Compile Include="CompetitorControl.xaml.cs">
+      <DependentUpon>CompetitorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IUpdater.cs" />
     <Compile Include="StopwatchControl.xaml.cs">
       <DependentUpon>StopwatchControl.xaml</DependentUpon>
     </Compile>
@@ -78,6 +81,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddTimerModal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CompetitorControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

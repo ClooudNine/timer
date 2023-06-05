@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Timer
 {
-    public interface IStopwatchAndTimer
+    public interface IUpdater
     {
         void UpdateStat();
     }

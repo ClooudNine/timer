@@ -10,19 +10,21 @@ namespace Timer
     /// <summary>
     /// Логика взаимодействия для TimerControl.xaml
     /// </summary>
-    public partial class TimerControl : UserControl, IStopwatchAndTimer
+    public partial class TimerControl : UserControl, IUpdater
     {
         DispatcherTimer dispatcherTimer;
-        List<IStopwatchAndTimer> stopwatchesAndTimers;
+        List<IUpdater> stopwatchesAndTimers;
+        string competitorName;
         string taskName;
         int fullSeconds;
         Stopwatch stopwatch = new Stopwatch();
 
-        public TimerControl(DispatcherTimer dispatcherTimer, List<IStopwatchAndTimer> stopwatchesAndTimers, string taskName, int fullSeconds)
+        public TimerControl(DispatcherTimer dispatcherTimer, List<IUpdater> stopwatchesAndTimers, string competitorName, string taskName, int fullSeconds)
         {
             InitializeComponent();
             this.dispatcherTimer = dispatcherTimer;
             this.stopwatchesAndTimers = stopwatchesAndTimers;
+            this.competitorName = competitorName;
             this.taskName = taskName;
             this.fullSeconds = fullSeconds;
 

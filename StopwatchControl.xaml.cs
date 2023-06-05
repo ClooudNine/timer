@@ -9,14 +9,14 @@ namespace Timer
     /// <summary>
     /// Логика взаимодействия для StopwatchControl.xaml
     /// </summary>
-    public partial class StopwatchControl : UserControl, IStopwatchAndTimer
+    public partial class StopwatchControl : UserControl, IUpdater
     {
         DispatcherTimer dispatcherTimer;
-        List<IStopwatchAndTimer> stopwatchesAndTimers;
+        List<IUpdater> stopwatchesAndTimers;
         string taskName;
         Stopwatch stopwatch = new Stopwatch();
 
-        public StopwatchControl(DispatcherTimer dispatcherTimer, List<IStopwatchAndTimer> stopwatchesAndTimers, string taskName)
+        public StopwatchControl(DispatcherTimer dispatcherTimer, List<IUpdater> stopwatchesAndTimers, string taskName)
         {
             InitializeComponent();
             this.dispatcherTimer = dispatcherTimer;
