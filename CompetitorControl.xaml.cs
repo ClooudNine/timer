@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Threading;
 
 namespace Timer
@@ -22,7 +23,13 @@ namespace Timer
             this.dispatcherTimer = dispatcherTimer;
             this.stopwatchesAndTimers = stopwatchesAndTimers;
             this.competitorName = competitorName;
-            CompetitorExpander.Header = competitorName;
+            CompetitorExpander.Header = new TextBlock
+            {
+                Text = competitorName,
+                FontFamily = new FontFamily("Cascadia Mono SemiBold"),
+                FontSize = 22,
+                Foreground = new SolidColorBrush(Colors.White)
+            };
         }
         private void AddTaskImage_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
@@ -48,7 +55,10 @@ namespace Timer
         }
         public void RunFirstTask()
         {
-            competitorTasks[0].RunTask();
+            if (competitorTasks.Count > 0)
+            {
+                competitorTasks[0].RunTask();
+            }
         }
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
