@@ -13,6 +13,8 @@ namespace Timer
     {
         DispatcherTimer dispatcherTimer;
         List<IUpdater> stopwatchesAndTimers;
+
+        List<IUpdater> competitorTasks = new List<IUpdater>();
         public string competitorName { get; set; }
         public CompetitorControl(DispatcherTimer dispatcherTimer, List<IUpdater> stopwatchesAndTimers, string competitorName)
         {
@@ -30,6 +32,7 @@ namespace Timer
                 if (addCompetitorTask.IsStopwatchRadio.IsChecked == true)
                 {
                     StopwatchControl stopwatchControl = new StopwatchControl(dispatcherTimer, stopwatchesAndTimers, addCompetitorTask.TaskNameTextBox.Text);
+                    competitorTasks.Add(stopwatchControl);
                     CompetitorTasksListBox.Items.Add(stopwatchControl);
                 }
                 else
@@ -38,11 +41,15 @@ namespace Timer
                                       int.Parse(addCompetitorTask.MinutesTextBox.Text) * 60 +
                                       int.Parse(addCompetitorTask.SecondsTextBox.Text);
                     TimerControl timerControl = new TimerControl(dispatcherTimer, stopwatchesAndTimers, competitorName, addCompetitorTask.TaskNameTextBox.Text, fullSeconds);
+                    competitorTasks.Add(timerControl);
                     CompetitorTasksListBox.Items.Add(timerControl);
                 }
             }
         }
-
+        public void RunFirstTask()
+        {
+            competitorTasks[0].RunTask();
+        }
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
             foreach (IUpdater stopwatchOrTimer in CompetitorTasksListBox.Items) 

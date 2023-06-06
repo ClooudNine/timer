@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
         mc:Ignorable="d"
-        Title="Timer"
+        Title="Таймер"
         Icon="Assets/app_icon.ico"
         Background="#f6f9fe"
         WindowState="Maximized" Loaded="Window_Loaded">

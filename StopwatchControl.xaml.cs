@@ -27,14 +27,7 @@ namespace Timer
         }
         private void StartStopwatchButton_Click(object sender, RoutedEventArgs e)
         {
-            if(stopwatchesAndTimers.Count == 0)
-            {
-                dispatcherTimer.Start();
-            }
-            stopwatchesAndTimers.Add(this);
-            stopwatch.Start();
-            StartStopwatchButton.IsEnabled = false;
-            StopStopwatchButton.IsEnabled = true;
+            RunTask();
         }
         private void StopStopwatchButton_Click(object sender, RoutedEventArgs e)
         {
@@ -65,6 +58,17 @@ namespace Timer
             int minutes = stopwatch.Elapsed.Minutes;
             int seconds = stopwatch.Elapsed.Seconds;
             StopwatchStatTextBox.Text = string.Format("{0:00}:{1:00}:{2:00}", hours, minutes, seconds);
+        }
+        public void RunTask()
+        {
+            if (stopwatchesAndTimers.Count == 0)
+            {
+                dispatcherTimer.Start();
+            }
+            stopwatchesAndTimers.Add(this);
+            stopwatch.Start();
+            StartStopwatchButton.IsEnabled = false;
+            StopStopwatchButton.IsEnabled = true;
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Input;
 using System.Windows.Threading;
 
 namespace Timer
@@ -50,6 +49,10 @@ namespace Timer
             }
             else
             {
+                foreach (CompetitorControl competitor in competitors)
+                {
+                    competitor.RunFirstTask();
+                }
             }
         }
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

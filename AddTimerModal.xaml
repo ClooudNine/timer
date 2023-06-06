@@ -4,37 +4,47 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Добавить новый таймер"
-        Height="300" BorderThickness="5"
-        Width="500"
+        Title="Добавление нового таймера"
+        Icon="Assets/app_icon.ico"
+        Height="200"
+        BorderThickness="5"
+        Width="450"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         WindowStyle="None"
         AllowsTransparency="True"
-        Background="{x:Null}">
-    <Window.Resources>
-        <LinearGradientBrush x:Key="GradientForCreateButton" StartPoint="0,0" EndPoint="1,1">
-            <GradientStop Color="#7F7FD5" Offset="0" />
-            <GradientStop Color="#86A8E7" Offset="0.5" />
-            <GradientStop Color="#91EAE4" Offset="1" />
-        </LinearGradientBrush>
-    </Window.Resources>
+        Background="Transparent">
     <Border CornerRadius="20" BorderBrush="Black" Background="White" BorderThickness="3">
-        <Grid Margin="0,0,0,-6">
-            <Label Content="Введите название таймера:" HorizontalAlignment="Center" Margin="0,23,0,0" VerticalAlignment="Top" FontFamily="Cascadia Code SemiBold" FontSize="24"/>
-            <TextBox x:Name="EnterCaptionTimer" HorizontalAlignment="Center" Margin="0,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="347" Height="28"/>
-            <Button x:Name="CreateButton" Content="Создать" HorizontalAlignment="Center" Margin="0,205,0,0" Width="150" Height="40" VerticalAlignment="Top" Click="CreateButton_Click">
+        <Grid>
+            <Label Content="Введите название таймера:" HorizontalAlignment="Center" Margin="0,6,0,0" VerticalAlignment="Top" FontFamily="Cascadia Code SemiBold" FontSize="24"/>
+            <TextBox x:Name="EnterCaptionTimer"
+                     FontFamily="Cascadia Mono SemiBold"
+                     FontSize="20"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"
+                     Width="346" Height="28"/>
+            <Button x:Name="CreateButton"
+                    Content="Создать"
+                    FontFamily="Cascadia Mono SemiBold"
+                    FontSize="24"
+                    Background="#57fe7e"
+                    HorizontalAlignment="Center"
+                    Margin="0,134,0,10"
+                    Width="150"
+                    Height="40"
+                    Click="CreateButton_Click">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="10"/>
                     </Style>
-                    <Style TargetType="Button">
-                        <Setter Property="Background" Value="{StaticResource GradientForCreateButton}" />
-                        <Setter Property="FontSize" Value="20"/>
-                    </Style>
                 </Button.Resources>
             </Button>
-            <Image x:Name="CloseImage" HorizontalAlignment="Left" Height="33" Margin="441,0,0,0" VerticalAlignment="Top" Width="35" Source="Assets/close.png" MouseLeftButtonUp="CloseImage_MouseLeftButtonUp"/>
+            <Image x:Name="CloseImage"
+                   Height="33"
+                   Margin="390,0,9,151"
+                   Width="35"
+                   Source="Assets/close.png"
+                   MouseLeftButtonUp="CloseImage_MouseLeftButtonUp"/>
         </Grid>
     </Border>
 </Window>
