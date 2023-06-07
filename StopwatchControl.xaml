@@ -20,7 +20,7 @@
                        FontSize="18"
                        FontFamily="Cascadia Mono SemiBold"
                        Text="00:00:00"></TextBlock>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <StackPanel Orientation="Horizontal">
                 <Button x:Name="StartStopwatchButton"
                         Height="45"
                         Margin="10 0 0 0"
