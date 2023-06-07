@@ -4,12 +4,66 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel Orientation="Horizontal">
-        <TextBlock x:Name="TaskNameTextBox" Text="Название задачи"></TextBlock>
-        <TextBlock x:Name="StopwatchStatTextBox" Text="00:00:00"></TextBlock>
-        <Button x:Name="StartStopwatchButton" Click="StartStopwatchButton_Click" Content="Старт"></Button>
-        <Button x:Name="StopStopwatchButton" Click="StopStopwatchButton_Click" Content="Стоп"></Button>
-        <Button x:Name="ResetStopwatchButton" Click="ResetStopwatchButton_Click" Content="Сброс"></Button>
-    </StackPanel>
+             d:DesignHeight="70"
+             d:DesignWidth="450">
+    <Border CornerRadius="10" Background="Wheat">
+        <StackPanel Orientation="Horizontal">
+            <TextBlock x:Name="TaskNameTextBox"
+                       VerticalAlignment="Center"
+                       Margin="10 0 0 0"
+                       FontSize="18"
+                       FontFamily="Cascadia Mono SemiBold"
+                       Text="Название задачи"></TextBlock>
+            <TextBlock x:Name="StopwatchStatTextBox"
+                       VerticalAlignment="Center"
+                       Margin="10 0 0 0"
+                       FontSize="18"
+                       FontFamily="Cascadia Mono SemiBold"
+                       Text="00:00:00"></TextBlock>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="StartStopwatchButton"
+                        Height="45"
+                        Margin="10 0 0 0"
+                        Background="Transparent"
+                        BorderBrush="Black"
+                        BorderThickness="4"
+                    Click="StartStopwatchButton_Click">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                    <Image Source="Assets/start.png"/>
+                </Button>
+                <Button x:Name="StopStopwatchButton"
+                    Height="45"
+                    Margin="10 0 0 0"
+                    Background="Transparent"
+                    BorderBrush="Black"
+                    BorderThickness="4"
+                    Click="StopStopwatchButton_Click">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                    <Image Source="Assets/pause.png"/>
+                </Button>
+                <Button x:Name="ResetStopwatchButton"
+                    Height="45"
+                    Margin="10 0 0 0"
+                    Background="Transparent"
+                    BorderBrush="Black"
+                    BorderThickness="4"
+                    Click="ResetStopwatchButton_Click">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                    <Image Source="Assets/reset.png"/>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+    </Border>
 </UserControl>
