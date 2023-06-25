@@ -67,6 +67,14 @@ namespace Timer
             TimeSpan time = TimeSpan.FromSeconds(seconds);
             return time.ToString(@"hh\:mm\:ss");
         }
+        public void SelectItem()
+        {
+
+        }
+        public void UnselectItem()
+        {
+
+        }
         public void UpdateStat()
         {
             TimerProgressBar.Value = stopwatch.Elapsed.TotalSeconds;

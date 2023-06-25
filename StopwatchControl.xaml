@@ -6,37 +6,50 @@
              mc:Ignorable="d" 
              d:DesignHeight="70"
              d:DesignWidth="450">
-    <Border CornerRadius="10" Background="Wheat">
-        <StackPanel Orientation="Horizontal">
+    <Border x:Name="TimerBorder" CornerRadius="10" Background="Wheat">
+        <StackPanel Orientation="Horizontal" Unloaded="StackPanel_Unloaded">
             <TextBlock x:Name="TaskNameTextBox"
                        VerticalAlignment="Center"
                        Margin="10 0 0 0"
                        FontSize="18"
                        FontFamily="Cascadia Mono SemiBold"
-                       Text="Название задачи"></TextBlock>
+                       Text="Название задачи"
+                       Width="100"
+                       TextTrimming="CharacterEllipsis"></TextBlock>
             <TextBlock x:Name="StopwatchStatTextBox"
                        VerticalAlignment="Center"
                        Margin="10 0 0 0"
-                       FontSize="18"
+                       FontSize="20"
+                       Width="110"
+                       TextAlignment="Center"
                        FontFamily="Cascadia Mono SemiBold"
                        Text="00:00:00"></TextBlock>
             <StackPanel Orientation="Horizontal">
                 <Button x:Name="StartStopwatchButton"
-                        Height="45"
+                        Height="40"
+                        Width="40"
                         Margin="10 0 0 0"
                         Background="Transparent"
                         BorderBrush="Black"
                         BorderThickness="4"
-                    Click="StartStopwatchButton_Click">
+                        Click="StartStopwatchButton_Click">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                        <Style TargetType="Button">
+                            <Style.Triggers>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Opacity" Value="0.5"/>
+                                </Trigger>
+                            </Style.Triggers>
                         </Style>
                     </Button.Resources>
                     <Image Source="Assets/start.png"/>
                 </Button>
                 <Button x:Name="StopStopwatchButton"
-                    Height="45"
+                    Height="40"
+                    Width="40"
                     Margin="10 0 0 0"
                     Background="Transparent"
                     BorderBrush="Black"
@@ -46,11 +59,19 @@
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="10"/>
                         </Style>
+                        <Style TargetType="Button">
+                            <Style.Triggers>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Opacity" Value="0.5"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
                     </Button.Resources>
                     <Image Source="Assets/pause.png"/>
                 </Button>
                 <Button x:Name="ResetStopwatchButton"
-                    Height="45"
+                    Height="40"
+                    Width="40"
                     Margin="10 0 0 0"
                     Background="Transparent"
                     BorderBrush="Black"
@@ -59,6 +80,13 @@
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                        <Style TargetType="Button">
+                            <Style.Triggers>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Opacity" Value="0.5"/>
+                                </Trigger>
+                            </Style.Triggers>
                         </Style>
                     </Button.Resources>
                     <Image Source="Assets/reset.png"/>

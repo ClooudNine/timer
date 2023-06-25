@@ -14,7 +14,6 @@ namespace Timer
     {
         DispatcherTimer dispatcherTimer;
         List<IUpdater> stopwatchesAndTimers;
-
         List<IUpdater> competitorTasks = new List<IUpdater>();
         public string competitorName { get; set; }
         public CompetitorControl(DispatcherTimer dispatcherTimer, List<IUpdater> stopwatchesAndTimers, string competitorName)
@@ -53,6 +52,21 @@ namespace Timer
                 }
             }
         }
+        private void DeleteTaskImage_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if(CompetitorTasksListBox.SelectedItem == null)
+            {
+                MessageBox.Show("Выделите задачи для удаления!", "Выделите задачи!");
+            } 
+            else
+            {
+                while (CompetitorTasksListBox.SelectedItems.Count > 0)
+                {
+                    competitorTasks.Remove((IUpdater)CompetitorTasksListBox.SelectedItems[0]);
+                    CompetitorTasksListBox.Items.Remove(CompetitorTasksListBox.SelectedItems[0]);
+                }
+            }
+        }
         public void RunFirstTask()
         {
             if (competitorTasks.Count > 0)
@@ -68,6 +82,18 @@ namespace Timer
                 {
                     stopwatchesAndTimers.Remove(stopwatchOrTimer);
                 }
+            }
+        }
+
+        private void CompetitorTasksListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(e.RemovedItems.Count > 0)
+            {
+                ((IUpdater)e.RemovedItems[0]).UnselectItem();
+            }
+            if(e.AddedItems.Count > 0)
+            {
+                ((IUpdater)e.AddedItems[0]).SelectItem();
             }
         }
     }

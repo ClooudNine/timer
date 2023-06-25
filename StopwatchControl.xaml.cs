@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Threading;
 
 namespace Timer
@@ -14,6 +16,7 @@ namespace Timer
         DispatcherTimer dispatcherTimer;
         List<IUpdater> stopwatchesAndTimers;
         string taskName;
+        bool isSelected;
         Stopwatch stopwatch = new Stopwatch();
 
         public StopwatchControl(DispatcherTimer dispatcherTimer, List<IUpdater> stopwatchesAndTimers, string taskName)
@@ -23,7 +26,12 @@ namespace Timer
             this.stopwatchesAndTimers = stopwatchesAndTimers;
             this.taskName = taskName;
             TaskNameTextBox.Text = taskName;
+            TaskNameTextBox.ToolTip = taskName;
             StopStopwatchButton.IsEnabled = false;
+            if (!isSelected)
+            {
+                TimerBorder.Background = new SolidColorBrush(Color.FromRgb(255, 87, 87));
+            }
         }
         private void StartStopwatchButton_Click(object sender, RoutedEventArgs e)
         {
@@ -37,6 +45,10 @@ namespace Timer
             {
                 dispatcherTimer.Stop();
             }
+            if (!isSelected)
+            {
+                TimerBorder.Background = new SolidColorBrush(Color.FromRgb(255, 87, 87));
+            }
             StartStopwatchButton.IsEnabled = true;
             StopStopwatchButton.IsEnabled = false;
         }
@@ -49,6 +61,10 @@ namespace Timer
                 dispatcherTimer.Stop();
             }
             StopwatchStatTextBox.Text = "00:00:00";
+            if (!isSelected)
+            {
+                TimerBorder.Background = new SolidColorBrush(Color.FromRgb(255, 87, 87));
+            }
             StartStopwatchButton.IsEnabled = true;
             StopStopwatchButton.IsEnabled = false;
         }
@@ -67,8 +83,37 @@ namespace Timer
             }
             stopwatchesAndTimers.Add(this);
             stopwatch.Start();
+            if (!isSelected)
+            {
+                TimerBorder.Background = new SolidColorBrush(Color.FromRgb(87, 255, 95));
+            }
             StartStopwatchButton.IsEnabled = false;
             StopStopwatchButton.IsEnabled = true;
+        }
+
+        public void SelectItem()
+        {
+            isSelected = true;
+            TimerBorder.Background  = new SolidColorBrush(Color.FromRgb(87, 188, 255));
+        }
+        public void UnselectItem()
+        {
+            isSelected = false;
+            if(stopwatch.IsRunning)
+            {
+                TimerBorder.Background = new SolidColorBrush(Color.FromRgb(87, 255, 95));
+            } else
+            {
+                TimerBorder.Background = new SolidColorBrush(Color.FromRgb(255, 87, 87));
+            }
+        }
+        private void StackPanel_Unloaded(object sender, RoutedEventArgs e)
+        {
+            if(stopwatch.IsRunning)
+            {
+                stopwatch.Stop();
+                stopwatchesAndTimers.Remove(this);
+            }
         }
     }
 }

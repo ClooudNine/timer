@@ -12,11 +12,11 @@
             <StackPanel>
                 <Border BorderBrush="White" BorderThickness="0 4 0 4">
                     <StackPanel VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    Orientation="Horizontal">
+                                HorizontalAlignment="Center"
+                                Orientation="Horizontal">
                         <Image x:Name="AddTaskImage" Source="Assets/addTask.png" ToolTip="Добавить задачу" MouseLeftButtonUp="AddTaskImage_MouseLeftButtonUp">
                         </Image>
-                        <Image Source="Assets/deleteTask.png" ToolTip="Удалить задачу">
+                        <Image x:Name="DeleteTaskImage" Source="Assets/deleteTask.png" ToolTip="Удалить задачу" MouseLeftButtonUp="DeleteTaskImage_MouseLeftButtonUp">
                         </Image>
                     </StackPanel>
                 </Border>
@@ -24,7 +24,21 @@
                          HorizontalContentAlignment="Stretch"
                          VerticalContentAlignment="Stretch"
                          Background="Transparent"
-                         BorderBrush="Transparent">
+                         BorderBrush="Transparent" 
+                         SelectionChanged="CompetitorTasksListBox_SelectionChanged" SelectionMode="Multiple">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="Margin" Value="5,5,5,5" />
+                            <Setter Property="IsSelected" Value="{Binding Content.IsSelected, Mode=TwoWay, RelativeSource={RelativeSource Self}}"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListBoxItem">
+                                        <ContentPresenter/>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
                 </ListBox>
             </StackPanel>
         </Expander>
