@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -14,12 +14,12 @@ namespace Timer
     public partial class StopwatchControl : UserControl, IUpdater
     {
         DispatcherTimer dispatcherTimer;
-        List<IUpdater> stopwatchesAndTimers;
+        ObservableCollection<IUpdater> stopwatchesAndTimers;
         string taskName;
         bool isSelected;
         Stopwatch stopwatch = new Stopwatch();
 
-        public StopwatchControl(DispatcherTimer dispatcherTimer, List<IUpdater> stopwatchesAndTimers, string taskName)
+        public StopwatchControl(DispatcherTimer dispatcherTimer, ObservableCollection<IUpdater> stopwatchesAndTimers, string taskName)
         {
             InitializeComponent();
             this.dispatcherTimer = dispatcherTimer;
@@ -105,14 +105,6 @@ namespace Timer
             } else
             {
                 TimerBorder.Background = new SolidColorBrush(Color.FromRgb(255, 87, 87));
-            }
-        }
-        private void StackPanel_Unloaded(object sender, RoutedEventArgs e)
-        {
-            if(stopwatch.IsRunning)
-            {
-                stopwatch.Stop();
-                stopwatchesAndTimers.Remove(this);
             }
         }
     }

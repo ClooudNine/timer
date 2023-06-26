@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,13 +13,13 @@ namespace Timer
     public partial class TimerControl : UserControl, IUpdater
     {
         DispatcherTimer dispatcherTimer;
-        List<IUpdater> stopwatchesAndTimers;
+        ObservableCollection<IUpdater> stopwatchesAndTimers;
         string competitorName;
         string taskName;
         int fullSeconds;
         Stopwatch stopwatch = new Stopwatch();
 
-        public TimerControl(DispatcherTimer dispatcherTimer, List<IUpdater> stopwatchesAndTimers, string competitorName, string taskName, int fullSeconds)
+        public TimerControl(DispatcherTimer dispatcherTimer, ObservableCollection<IUpdater> stopwatchesAndTimers, string competitorName, string taskName, int fullSeconds)
         {
             InitializeComponent();
             this.dispatcherTimer = dispatcherTimer;

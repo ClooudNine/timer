@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -9,9 +10,9 @@ namespace Timer
     /// </summary>
     public partial class DeleteCompetitorModal : Window
     {
-        List<CompetitorControl> competitors;
+        ObservableCollection<CompetitorControl> competitors;
         WrapPanel competitorsPanel;
-        public DeleteCompetitorModal(List<CompetitorControl> competitors, WrapPanel competitorsPanel)
+        public DeleteCompetitorModal(ObservableCollection<CompetitorControl> competitors, WrapPanel competitorsPanel)
         {
             InitializeComponent();
             this.competitors = competitors;
@@ -24,9 +25,8 @@ namespace Timer
         {
             if(CompetitorsListBox.SelectedItem != null)
             {
-                competitors.Remove(CompetitorsListBox.SelectedItem as CompetitorControl);
                 competitorsPanel.Children.Remove(CompetitorsListBox.SelectedItem as CompetitorControl);
-                CompetitorsListBox.Items.Refresh();
+                competitors.Remove(CompetitorsListBox.SelectedItem as CompetitorControl);
             }
         }
 

@@ -4,10 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="70"
+             d:DesignHeight="100"
              d:DesignWidth="450">
     <Border x:Name="TimerBorder" CornerRadius="10" Background="Wheat">
-        <StackPanel Orientation="Horizontal" Unloaded="StackPanel_Unloaded">
+        <StackPanel Orientation="Horizontal">
             <TextBlock x:Name="TaskNameTextBox"
                        VerticalAlignment="Center"
                        Margin="10 0 0 0"

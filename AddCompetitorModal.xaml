@@ -37,6 +37,7 @@
                          Width="300"
                          Margin="20 0 0 0"
                          Height="30"
+                         MaxLength="20"
                          HorizontalAlignment="Center">
                     <TextBox.Resources>
                         <Style TargetType="Border">

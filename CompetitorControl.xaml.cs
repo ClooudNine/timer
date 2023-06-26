@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -13,10 +13,10 @@ namespace Timer
     public partial class CompetitorControl : UserControl
     {
         DispatcherTimer dispatcherTimer;
-        List<IUpdater> stopwatchesAndTimers;
-        List<IUpdater> competitorTasks = new List<IUpdater>();
+        ObservableCollection<IUpdater> stopwatchesAndTimers;
+        ObservableCollection<IUpdater> competitorTasks = new ObservableCollection<IUpdater>();
         public string competitorName { get; set; }
-        public CompetitorControl(DispatcherTimer dispatcherTimer, List<IUpdater> stopwatchesAndTimers, string competitorName)
+        public CompetitorControl(DispatcherTimer dispatcherTimer, ObservableCollection<IUpdater> stopwatchesAndTimers, string competitorName)
         {
             InitializeComponent();
             this.dispatcherTimer = dispatcherTimer;
@@ -29,6 +29,7 @@ namespace Timer
                 FontSize = 22,
                 Foreground = new SolidColorBrush(Colors.White)
             };
+            CompetitorTasksListBox.ItemsSource = competitorTasks;
         }
         private void AddTaskImage_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
@@ -39,7 +40,6 @@ namespace Timer
                 {
                     StopwatchControl stopwatchControl = new StopwatchControl(dispatcherTimer, stopwatchesAndTimers, addCompetitorTask.TaskNameTextBox.Text);
                     competitorTasks.Add(stopwatchControl);
-                    CompetitorTasksListBox.Items.Add(stopwatchControl);
                 }
                 else
                 {
@@ -48,7 +48,6 @@ namespace Timer
                                       int.Parse(addCompetitorTask.SecondsTextBox.Text);
                     TimerControl timerControl = new TimerControl(dispatcherTimer, stopwatchesAndTimers, competitorName, addCompetitorTask.TaskNameTextBox.Text, fullSeconds);
                     competitorTasks.Add(timerControl);
-                    CompetitorTasksListBox.Items.Add(timerControl);
                 }
             }
         }
@@ -62,8 +61,8 @@ namespace Timer
             {
                 while (CompetitorTasksListBox.SelectedItems.Count > 0)
                 {
+                    stopwatchesAndTimers.Remove((IUpdater)CompetitorTasksListBox.SelectedItems[0]);
                     competitorTasks.Remove((IUpdater)CompetitorTasksListBox.SelectedItems[0]);
-                    CompetitorTasksListBox.Items.Remove(CompetitorTasksListBox.SelectedItems[0]);
                 }
             }
         }
@@ -74,17 +73,6 @@ namespace Timer
                 competitorTasks[0].RunTask();
             }
         }
-        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
-        {
-            foreach (IUpdater stopwatchOrTimer in CompetitorTasksListBox.Items) 
-            {
-                if(stopwatchesAndTimers.Contains(stopwatchOrTimer))
-                {
-                    stopwatchesAndTimers.Remove(stopwatchOrTimer);
-                }
-            }
-        }
-
         private void CompetitorTasksListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(e.RemovedItems.Count > 0)
@@ -94,6 +82,45 @@ namespace Timer
             if(e.AddedItems.Count > 0)
             {
                 ((IUpdater)e.AddedItems[0]).SelectItem();
+            }
+            if(CompetitorTasksListBox.SelectedItems.Count == 1)
+            {
+                TaskUpImage.IsEnabled = true;
+                TaskUpImage.Opacity = 1;
+                TaskDownImage.IsEnabled = true;
+                TaskDownImage.Opacity = 1;
+            } 
+            else
+            {
+                TaskUpImage.IsEnabled = false;
+                TaskUpImage.Opacity = 0.5;
+                TaskDownImage.IsEnabled = false;
+                TaskDownImage.Opacity = 0.5;
+            }
+        }
+        private void TaskUpImage_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            int index = CompetitorTasksListBox.SelectedIndex;
+            if (index != 0)
+            {
+                (competitorTasks[index], competitorTasks[index - 1]) = (competitorTasks[index - 1], competitorTasks[index]);
+                CompetitorTasksListBox.SelectedIndex = index - 1;
+            }
+        }
+        private void TaskDownImage_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            int index = CompetitorTasksListBox.SelectedIndex;
+            if (index != competitorTasks.Count - 1)
+            {
+                (competitorTasks[index], competitorTasks[index + 1]) = (competitorTasks[index + 1], competitorTasks[index]);
+                CompetitorTasksListBox.SelectedIndex = index + 1;
+            }
+        }
+        private void Competitor_Unloaded(object sender, RoutedEventArgs e)
+        {
+            foreach (IUpdater stopwatchOrTimer in competitorTasks)
+            {
+                stopwatchesAndTimers.Remove(stopwatchOrTimer);
             }
         }
     }

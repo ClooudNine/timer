@@ -12,14 +12,7 @@
         Width="800"
         Height="300" 
         WindowStyle="None">
-    <Border CornerRadius="20" BorderThickness="0" BorderBrush="Transparent">
-        <Border.Background>
-            <LinearGradientBrush StartPoint="0.5, 0" EndPoint="0.5,1">
-                <GradientStop Color="#7F7FD5" Offset="0" />
-                <GradientStop Color="#86A8E7" Offset="0.5" />
-                <GradientStop Color="#91EAE4" Offset="1" />
-            </LinearGradientBrush>
-        </Border.Background>
+    <Border CornerRadius="20" BorderThickness="5" BorderBrush="Black" Background="White">
         <Grid Background="Transparent">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"></RowDefinition>
@@ -36,7 +29,7 @@
                Grid.Column="0"
                Grid.ColumnSpan="3"
                FontFamily="Cascadia Mono SemiBold"
-               FontSize="32"
+               FontSize="28"
                Content="Добавление задачи для участника"
                HorizontalAlignment="Center"
                VerticalAlignment="Center"/>
@@ -53,42 +46,80 @@
                    FontSize="20"
                    HorizontalAlignment="Left"/>
                 <TextBox x:Name="TaskNameTextBox"
-                     HorizontalAlignment="Stretch"
-                     VerticalAlignment="Center"/>
+                         FontFamily="Cascadia Mono SemiBold"
+                         FontSize="18"
+                         HorizontalAlignment="Stretch"
+                         MaxLength="20"
+                         Margin="0 20 0 0"
+                         VerticalAlignment="Center">
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center">
                 <Label Content="Выберите тип:"
                    FontFamily="Cascadia Mono SemiBold"
                    FontSize="20"/>
-                <StackPanel>
-                    <RadioButton x:Name="IsTimerRadio" Content="Таймер" Checked="IsTimerRadio_Checked"/>
-                    <RadioButton x:Name="IsStopwatchRadio" Content="Секундомер" Checked="IsStopwatchRadio_Checked"/>
+                <StackPanel Margin="0 20 0 0">
+                    <RadioButton x:Name="IsTimerRadio" Content="Таймер" FontFamily="Cascadia Mono SemiBold" FontSize="18" Checked="IsTimerRadio_Checked"/>
+                    <RadioButton x:Name="IsStopwatchRadio" Content="Секундомер" FontFamily="Cascadia Mono SemiBold" FontSize="18" Margin="0 20 0 0" Checked="IsStopwatchRadio_Checked"/>
                 </StackPanel>
             </StackPanel>
             <Button x:Name="AddTaskButton"
-                Grid.Row="2"
-                Grid.Column="1"
-                Content="Добавить задачу"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Height="23" Width="124"
-                Click="AddTaskButton_Click"/>
-            <StackPanel x:Name="SetTimer" Grid.Column="2" Grid.Row="1" VerticalAlignment="Top" Visibility="Hidden">
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Content="Добавить задачу"
+                    FontFamily="Cascadia Mono SemiBold"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Height="35" Width="180"
+                    Background="#00fddf"
+                    Click="AddTaskButton_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <StackPanel x:Name="SetTimer" Grid.Column="2" Grid.Row="1" VerticalAlignment="Top" Visibility="Visible">
                 <Label Content="Укажите время таймера:"
                    FontFamily="Cascadia Mono SemiBold"
                    FontSize="20"
                    HorizontalAlignment="Center"/>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Часы:"></TextBlock>
-                    <TextBox x:Name="HoursTextBox" Margin="20 0 0 0" Width="120" MaxLength="2" />
-                </StackPanel>
+                <StackPanel Margin="0 20 0 0">
+                    <StackPanel Orientation="Horizontal">
+                    <TextBlock FontFamily="Cascadia Mono SemiBold" FontSize="18" Text="Часы:"></TextBlock>
+                        <TextBox x:Name="HoursTextBox" FontFamily="Cascadia Mono SemiBold" Margin="35 0 0 0" Width="120" MaxLength="2">
+                            <TextBox.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </TextBox.Resources>
+                        </TextBox>
+                    </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
-                    <TextBlock Text="Минуты:"></TextBlock>
-                    <TextBox x:Name="MinutesTextBox" Margin="5 0 0 0" Width="120" MaxLength="2"/>
-                </StackPanel>
+                    <TextBlock FontFamily="Cascadia Mono SemiBold" FontSize="18" Text="Минуты:"></TextBlock>
+                        <TextBox x:Name="MinutesTextBox" FontFamily="Cascadia Mono SemiBold" Margin="14 0 0 0" Width="120" MaxLength="2">
+                            <TextBox.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </TextBox.Resources>
+                        </TextBox>
+                    </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
-                    <TextBlock Text="Секунды:"></TextBlock>
-                    <TextBox x:Name="SecondsTextBox" Margin="2 0 0 0" Width="120" MaxLength="2"/>
+                    <TextBlock FontFamily="Cascadia Mono SemiBold" FontSize="18" Text="Секунды:"></TextBlock>
+                    <TextBox x:Name="SecondsTextBox" FontFamily="Cascadia Mono SemiBold" Margin="3 0 0 0" Width="120" MaxLength="2">
+                        <TextBox.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    </StackPanel>
                 </StackPanel>
             </StackPanel>
         </Grid>

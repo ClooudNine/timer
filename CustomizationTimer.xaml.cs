@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Threading;
 
@@ -11,8 +12,8 @@ namespace Timer
     public partial class CustomizationTimer : Window
     {
         public DispatcherTimer dispatcherTimer = new DispatcherTimer();
-        public List<IUpdater> stopwatchesAndTimers = new List<IUpdater>();
-        public List<CompetitorControl> competitors  = new List<CompetitorControl>();
+        public ObservableCollection<IUpdater> stopwatchesAndTimers = new ObservableCollection<IUpdater>();
+        public ObservableCollection<CompetitorControl> competitors  = new ObservableCollection<CompetitorControl>();
         public CustomizationTimer()
         {
             InitializeComponent();
@@ -21,7 +22,7 @@ namespace Timer
         }
         private void DispatcherTimer_Tick(object sender, EventArgs e)
         {
-            foreach(IUpdater stopwatch in stopwatchesAndTimers.ToArray())
+            foreach(IUpdater stopwatch in stopwatchesAndTimers)
             {
                 stopwatch.UpdateStat();
             }
