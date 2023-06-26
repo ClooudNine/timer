@@ -28,10 +28,7 @@ namespace Timer
             TaskNameTextBox.Text = taskName;
             TaskNameTextBox.ToolTip = taskName;
             StopStopwatchButton.IsEnabled = false;
-            if (!isSelected)
-            {
-                TimerBorder.Background = new SolidColorBrush(Color.FromRgb(255, 87, 87));
-            }
+            TimerBorder.Background = new SolidColorBrush(Color.FromRgb(255, 87, 87));
         }
         private void StartStopwatchButton_Click(object sender, RoutedEventArgs e)
         {
@@ -47,7 +44,7 @@ namespace Timer
             }
             if (!isSelected)
             {
-                TimerBorder.Background = new SolidColorBrush(Color.FromRgb(255, 87, 87));
+                TimerBorder.Background = new SolidColorBrush(Color.FromRgb(244, 255, 61));
             }
             StartStopwatchButton.IsEnabled = true;
             StopStopwatchButton.IsEnabled = false;

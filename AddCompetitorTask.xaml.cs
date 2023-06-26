@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Timer
 {
@@ -28,10 +17,10 @@ namespace Timer
         {
             if(IsStopwatchRadio.IsChecked == false && IsTimerRadio.IsChecked == false) 
             {
-                MessageBox.Show("Выберите тип таймера!");
+                MessageBox.Show("Выберите тип таймера!", "Не выбран тип таймера!");
             } else if (TaskNameTextBox.Text.Length == 0)
             {
-                MessageBox.Show("Введите название задачи!");
+                MessageBox.Show("Введите название задачи!", "Отсутствует название задачи!");
             } else
             {
                 if(IsTimerRadio.IsChecked == true)
@@ -41,7 +30,7 @@ namespace Timer
                         int.TryParse(SecondsTextBox.Text, out int seconds))
                     {
 
-                        if(hours < 0 || hours > 24)
+                        if(hours < 0 || hours > 23)
                         {
                             MessageBox.Show("Часы должны находиться в диапазоне от 0 до 24!", "Неверный ввод данных!");
                             return;
@@ -57,9 +46,10 @@ namespace Timer
                             return;
                         }
                         DialogResult = true;
-                    } else
+                    } 
+                    else
                     {
-                        MessageBox.Show("Введите численные данные!", "Неверный ввод данных!");
+                        MessageBox.Show("Введите числовые данные!", "Неверный ввод данных!");
                     }
                 } 
                 else 
@@ -68,17 +58,14 @@ namespace Timer
                 }
             }
         }
-
         private void IsTimerRadio_Checked(object sender, RoutedEventArgs e)
         {
             SetTimer.Visibility = Visibility.Visible;
         }
-
         private void Image_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             DialogResult = false;
         }
-
         private void IsStopwatchRadio_Checked(object sender, RoutedEventArgs e)
         {
             SetTimer.Visibility = Visibility.Hidden;

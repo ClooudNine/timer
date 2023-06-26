@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Threading;
 
 namespace Timer
@@ -16,6 +17,7 @@ namespace Timer
         ObservableCollection<IUpdater> stopwatchesAndTimers;
         string competitorName;
         string taskName;
+        bool isSelected;
         int fullSeconds;
         Stopwatch stopwatch = new Stopwatch();
 
@@ -29,9 +31,11 @@ namespace Timer
             this.fullSeconds = fullSeconds;
 
             TaskNameTextBox.Text =this.taskName;
+            TaskNameTextBox.ToolTip = this.taskName;
             StopwatchStatTextBox.Text = SecondsToHMS(this.fullSeconds);
             TimerProgressBar.Maximum = this.fullSeconds;
             StopStopwatchButton.IsEnabled = false;
+            TimerBorder.Background = new SolidColorBrush(Color.FromRgb(255, 87, 87));
         }
         private void StartStopwatchButton_Click(object sender, RoutedEventArgs e)
         {
@@ -69,11 +73,20 @@ namespace Timer
         }
         public void SelectItem()
         {
-
+            isSelected = true;
+            TimerBorder.Background = new SolidColorBrush(Color.FromRgb(87, 188, 255));
         }
         public void UnselectItem()
         {
-
+            isSelected = false;
+            if (stopwatch.IsRunning)
+            {
+                TimerBorder.Background = new SolidColorBrush(Color.FromRgb(87, 255, 95));
+            }
+            else
+            {
+                TimerBorder.Background = new SolidColorBrush(Color.FromRgb(255, 87, 87));
+            }
         }
         public void UpdateStat()
         {

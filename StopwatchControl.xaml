@@ -6,7 +6,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="100"
              d:DesignWidth="450">
-    <Border x:Name="TimerBorder" CornerRadius="10" Background="Wheat">
+    <Border x:Name="TimerBorder" CornerRadius="10" Background="White">
         <StackPanel Orientation="Horizontal">
             <TextBlock x:Name="TaskNameTextBox"
                        VerticalAlignment="Center"

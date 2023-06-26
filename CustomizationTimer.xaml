@@ -101,7 +101,7 @@
         <Border Grid.Row="3" Grid.Column="0" Margin="20 0 20 0" BorderBrush="White" BorderThickness="5" CornerRadius="20">
             <ScrollViewer Grid.Row="3" Grid.Column="0" VerticalScrollBarVisibility="Auto">
                 <WrapPanel x:Name="Competitors"
-                           ItemWidth="450"
+                           ItemWidth="480"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Top"/>
             </ScrollViewer>

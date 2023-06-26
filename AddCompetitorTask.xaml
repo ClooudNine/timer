@@ -84,7 +84,7 @@
                     </Style>
                 </Button.Resources>
             </Button>
-            <StackPanel x:Name="SetTimer" Grid.Column="2" Grid.Row="1" VerticalAlignment="Top" Visibility="Visible">
+            <StackPanel x:Name="SetTimer" Grid.Column="2" Grid.Row="1" VerticalAlignment="Top" Visibility="Hidden">
                 <Label Content="Укажите время таймера:"
                    FontFamily="Cascadia Mono SemiBold"
                    FontSize="20"
